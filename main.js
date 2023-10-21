@@ -30,7 +30,7 @@ let shopItems = [
         desc : "Lorem, ipsum dolor sit amet consectetur adipisicing",
         img : "images/img-4.jpg"
     }
-]
+];
 
 
 
@@ -46,18 +46,26 @@ let generateShop = ()=>{
                     <p>Lorem, ipsum dolor sit amet consectetur adipisicing.</p>
                     <div class="price-quantity">
                         
-                            <h2> ${x.price} </h2>
+                            <h2> $ ${x.price} </h2>
                         
                         <div class="buttons">
     
-                            <i class="bi bi-dash-lg"></i>
-                            <div id = " ${x.id} " class="quantity">0</div>
-                            <i class="bi bi-plus-lg"></i>
+                            <i onclick = "decrement(${x.id})" class="bi bi-dash-lg"></i>
+                            <div id = "${x.id}" class="quantity">0</div>
+                            <i onclick = "increment(${x.id})" class="bi bi-plus-lg"></i>
     
                         </div>
                     </div>
                 </div>
             </div>`
-    } ) .join(" ") );
+    } ) .join("") );
 }
 generateShop();
+
+let increment = (id) => {
+    console.log(id);
+};
+let decrement = (id)=>{
+    console.log(id);
+};
+let update = ()=>{};
