@@ -1,6 +1,9 @@
 let shop = document.getElementById("shop")
 
 
+let bascet = [];
+
+
 let shopItems = [ 
     {
         id : "c1",
@@ -63,9 +66,38 @@ let generateShop = ()=>{
 generateShop();
 
 let increment = (id) => {
-    console.log(id);
+    let selectedItem = id
+
+    let search = bascet.find((x)=> x.id === selectedItem.id )
+
+    if(search === undefined){
+        bascet.push( {
+            id: selectedItem.id,
+            item : 1
+        } )
+    }
+    else{
+        search.item +=1;
+    }
+
+   
+
+   console.log(bascet);
 };
 let decrement = (id)=>{
-    console.log(id);
+    let selectedItem = id
+
+    let search = bascet.find((x)=> x.id === selectedItem.id )
+
+    if(search.item === 0 ){
+       return
+    }
+    else{
+        search.item -=1;
+    }
+
+   
+
+   console.log(bascet);
 };
 let update = ()=>{};
