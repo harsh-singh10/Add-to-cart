@@ -4,43 +4,43 @@ let shop = document.getElementById("shop")
 let bascet = [];
 
 
-let shopItems = [ 
+let shopItems = [
     {
-        id : "c1",
+        id: "c1",
         name: "casual shirt",
-        price : 25,
-        desc : "Lorem, ipsum dolor sit amet consectetur adipisicing",
-        img : "images/img-1.jpg"
-    } ,
+        price: 25,
+        desc: "Lorem, ipsum dolor sit amet consectetur adipisicing",
+        img: "images/img-1.jpg"
+    },
     {
-        id : "c2",
+        id: "c2",
         name: "shirt",
-        price : 85,
-        desc : "Lorem, ipsum dolor sit amet consectetur adipisicing",
-        img : "images/img-2.jpg"
+        price: 85,
+        desc: "Lorem, ipsum dolor sit amet consectetur adipisicing",
+        img: "images/img-2.jpg"
     },
     {
-        id : "c3",
+        id: "c3",
         name: "T- shirt",
-        price : 255,
-        desc : "Lorem, ipsum dolor sit amet consectetur adipisicing",
-        img : "images/img-3.jpg"
+        price: 255,
+        desc: "Lorem, ipsum dolor sit amet consectetur adipisicing",
+        img: "images/img-3.jpg"
     },
     {
-        id : "c4",
+        id: "c4",
         name: "Formal",
-        price : 295,
-        desc : "Lorem, ipsum dolor sit amet consectetur adipisicing",
-        img : "images/img-4.jpg"
+        price: 295,
+        desc: "Lorem, ipsum dolor sit amet consectetur adipisicing",
+        img: "images/img-4.jpg"
     }
 ];
 
 
 
 
-let generateShop = ()=>{
+let generateShop = () => {
 
-    return (shop.innerHTML = shopItems.map((x)=>{
+    return (shop.innerHTML = shopItems.map((x) => {
         return `
         <div id = "product-id-${x.id} "  class="item">
                 <img width="220" src=" ${x.img} " alt="">
@@ -61,43 +61,59 @@ let generateShop = ()=>{
                     </div>
                 </div>
             </div>`
-    } ) .join("") );
+    }).join(""));
 }
 generateShop();
 
 let increment = (id) => {
     let selectedItem = id
 
-    let search = bascet.find((x)=> x.id === selectedItem.id )
+    let search = bascet.find((x) => x.id === selectedItem.id)
 
-    if(search === undefined){
-        bascet.push( {
+    if (search === undefined) {
+        bascet.push({
             id: selectedItem.id,
-            item : 1
-        } )
+            item: 1
+        })
     }
-    else{
-        search.item +=1;
+    else {
+        search.item += 1;
     }
 
-   
 
-   console.log(bascet);
+
+    // console.log(bascet);
+
+    update(selectedItem.id);
 };
-let decrement = (id)=>{
+let decrement = (id) => {
     let selectedItem = id
 
-    let search = bascet.find((x)=> x.id === selectedItem.id )
+    let search = bascet.find((x) => x.id === selectedItem.id)
 
-    if(search.item === 0 ){
-       return
+    if (search.item === 0) {
+        return
     }
-    else{
-        search.item -=1;
+    else {
+        search.item -= 1;
     }
 
-   
-
-   console.log(bascet);
+    //console.log(bascet);
+    update(selectedItem.id);
 };
-let update = ()=>{};
+let update = (id) => {
+
+    let search = bascet.find((x) => x.id === id)
+    document.getElementById(id).innerHTML = search.item
+    //console.log(search.item)
+    calculate();
+};
+
+let calculate = () => {
+
+    let cartIcon = document.getElementById("cartAmount");
+      cartIcon.innerHTML = bascet.map((x) => x.item).reduce((x, y) => x + y, 0)
+
+    console.log();
+
+};
