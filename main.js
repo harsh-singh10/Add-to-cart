@@ -1,7 +1,7 @@
 let shop = document.getElementById("shop")
 
 
-let bascet = [];
+let bascet =  [];
 
 
 let shopItems = [
@@ -41,6 +41,10 @@ let shopItems = [
 let generateShop = () => {
 
     return (shop.innerHTML = shopItems.map((x) => {
+        let {id , name, price,desc } = x
+        let search = bascet.find((x) => x.id === id)
+       
+
         return `
         <div id = "product-id-${x.id} "  class="item">
                 <img width="220" src=" ${x.img} " alt="">
@@ -81,7 +85,7 @@ let increment = (id) => {
     }
 
 
-
+   
     // console.log(bascet);
 
     update(selectedItem.id);
@@ -99,6 +103,7 @@ let decrement = (id) => {
     }
 
     //console.log(bascet);
+
     update(selectedItem.id);
 };
 let update = (id) => {
@@ -114,6 +119,5 @@ let calculate = () => {
     let cartIcon = document.getElementById("cartAmount");
       cartIcon.innerHTML = bascet.map((x) => x.item).reduce((x, y) => x + y, 0)
 
-    console.log();
 
 };
