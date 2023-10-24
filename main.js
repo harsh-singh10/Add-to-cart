@@ -1,5 +1,6 @@
 let shop = document.getElementById("shop")
 
+let main;
 
 let bascet = [];
 
