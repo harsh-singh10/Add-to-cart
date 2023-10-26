@@ -94,8 +94,8 @@ let decrement = (id) => {
     let selectedItem = id
 
     let search = bascet.find((x) => x.id === selectedItem.id)
-
-    if (search.item === 0) {
+    if(search == undefined) return;
+    else if (search.item === 0) {
         return
     }
     else {
@@ -119,8 +119,6 @@ let calculate = () => {
     let cartIcon = document.getElementById("cartAmount");
       cartIcon.innerHTML = bascet.map((x) => x.item).reduce((x, y) => x + y, 0)
 
-   
-      
 
 };
 calculate();
