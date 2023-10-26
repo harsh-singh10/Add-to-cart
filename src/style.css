@@ -66,6 +66,13 @@ i{
     
 }
 
+/* anchor tag  */
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
 .item{
     border: 2px solid #232529;
     border-radius: 5px;
