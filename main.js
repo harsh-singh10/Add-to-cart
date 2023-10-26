@@ -85,10 +85,11 @@ let increment = (id) => {
     }
 
 
-    localStorage.setItem("data" , JSON.stringify(bascet));
+    
     // console.log(bascet);
 
     update(selectedItem.id);
+    localStorage.setItem("data" , JSON.stringify(bascet));
 };
 let decrement = (id) => {
     let selectedItem = id
@@ -101,9 +102,14 @@ let decrement = (id) => {
     else {
         search.item -= 1;
     }
-    localStorage.setItem("data" , JSON.stringify(bascet)); 
-    //console.log(bascet);
     update(selectedItem.id);
+    bascet = bascet.filter( (x) => x.item !==0 );
+
+
+   
+    //console.log(bascet);
+    
+    localStorage.setItem("data" , JSON.stringify(bascet)); 
 };
 let update = (id) => {
 
