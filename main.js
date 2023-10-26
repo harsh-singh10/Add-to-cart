@@ -2,7 +2,7 @@ let shop = document.getElementById("shop")
 
 let main;
 
-let bascet = [];
+let bascet = JSON.parse( localStorage.getItem("data") )  || [];
 
 
 let shopItems = [
@@ -42,6 +42,7 @@ let shopItems = [
 let generateShop = () => {
 
     return (shop.innerHTML = shopItems.map((x) => {
+        let search = bascet.find( (p)=> p.id ===x.id ) || []
         return `
         <div id = "product-id-${x.id} "  class="item">
                 <img width="220" src=" ${x.img} " alt="">
@@ -55,7 +56,9 @@ let generateShop = () => {
                         <div class="buttons">
     
                             <i onclick = "decrement(${x.id})" class="bi bi-dash-lg"></i>
-                            <div id = "${x.id}" class="quantity">0</div>
+                            <div id = "${x.id}" class="quantity">
+                            ${search.item == undefined? 0 : search.item}
+                            </div>
                             <i onclick = "increment(${x.id})" class="bi bi-plus-lg"></i>
     
                         </div>
@@ -82,7 +85,7 @@ let increment = (id) => {
     }
 
 
-
+    localStorage.setItem("data" , JSON.stringify(bascet));
     // console.log(bascet);
 
     update(selectedItem.id);
@@ -98,7 +101,7 @@ let decrement = (id) => {
     else {
         search.item -= 1;
     }
-
+    localStorage.setItem("data" , JSON.stringify(bascet)); 
     //console.log(bascet);
     update(selectedItem.id);
 };
@@ -115,6 +118,7 @@ let calculate = () => {
     let cartIcon = document.getElementById("cartAmount");
       cartIcon.innerHTML = bascet.map((x) => x.item).reduce((x, y) => x + y, 0)
 
-    console.log();
+   // console.log();
 
 };
+calculate();
