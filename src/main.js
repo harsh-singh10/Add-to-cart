@@ -86,7 +86,7 @@ let update = (id) => {
 
     let search = bascet.find((x) => x.id === id)
     document.getElementById(id).innerHTML = search.item
-    //console.log(search.item)
+    console.log(search.item)
     calculate();
 };
 
